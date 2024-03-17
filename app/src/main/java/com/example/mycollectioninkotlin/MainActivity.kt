@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
-     val dataList  by viewModel.dataFlow.collectAsState(emptyList())
+    val dataList  by viewModel.dataFlow.collectAsState(emptyList())
     val ctx = LocalContext.current
     LazyColumn(modifier = modifier
         .fillMaxWidth()
@@ -76,7 +76,6 @@ fun MyApp(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
 
 @Composable
 fun ProductItem(province: Province, onItemClick: (Province) -> Unit) {
-    // Your item UI code here
     // Detect click and invoke the onItemClick lambda
     Box(
         modifier = Modifier
@@ -85,17 +84,5 @@ fun ProductItem(province: Province, onItemClick: (Province) -> Unit) {
         contentAlignment = Alignment.Center
 
     ) {
-        //Text(text = province.name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-        Text(text = province.province, fontSize = 25.sp, color = Color.Gray, fontWeight = FontWeight.Bold)
-
-    }
-}
-
-
-@Preview(showBackground = true, widthDp = 320)
-@Composable
-fun GreetingPreview() {
-    MyCollectionInKotlinTheme {
-       // MyApp(responseList)
-    }
+        Text(text = province.province, fontSize = 25.sp, color = Color.Gray, fontWeight = FontWeight.Bold)    }
 }

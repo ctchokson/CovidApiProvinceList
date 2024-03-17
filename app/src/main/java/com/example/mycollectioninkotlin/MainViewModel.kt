@@ -52,7 +52,6 @@ class MainViewModel(private val application: Application): AndroidViewModel(appl
                 }
             }
             catch (e: Exception){
-                //Toast.makeText(this,e.localizedMessage,Toast.LENGTH_LONG).show()
                 return@withContext
             }
         }
