@@ -23,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mycollectioninkotlin.ui.theme.MyCollectionInKotlinTheme
@@ -38,7 +37,7 @@ class DetailActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CenterAlignedTopAppBarExample()
+                    CenterAlignedTopAppBar()
                     DisplayDetails(extraDetail(intent))
                 }
             }
@@ -62,7 +61,7 @@ fun DisplayDetails(province: Province, modifier: Modifier = Modifier) {
     Column {
         Spacer(modifier = Modifier.height(80.dp))
         Text(text = province.iso, modifier.align(Alignment.CenterHorizontally), fontSize = 18.sp, fontWeight = FontWeight.Bold)
-        // Add a vertical space between the author and message texts
+        // Add a vertical space between texts
         Spacer(modifier = Modifier.height(4.dp))
         Text(text = province.name,modifier.align(Alignment.CenterHorizontally),fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(4.dp))
@@ -78,7 +77,7 @@ fun DisplayDetails(province: Province, modifier: Modifier = Modifier) {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CenterAlignedTopAppBarExample() {
+fun CenterAlignedTopAppBar() {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
@@ -103,9 +102,3 @@ fun CenterAlignedTopAppBarExample() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview2() {
-    MyCollectionInKotlinTheme {
-    }
-}

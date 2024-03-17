@@ -36,8 +36,9 @@ private val retrofit = Retrofit.Builder()
 interface CovidApiService {
     /**
 
-     * The @GET annotation indicates that the "neo/rest/v1/feed" endpoint will be requested with the GET
+     * The @GET annotation indicates that the "provinces" endpoint will be requested with the GET
      * HTTP method
+     * exposing the header keys since this is a public api that everyone has access to
      */
     @Headers("X-RapidAPI-Key:1594292007msh2465fbc1922fddfp1fcacbjsn3ad354c84a4f","X-RapidAPI-Host:covid-19-statistics.p.rapidapi.com")
     @GET("provinces")

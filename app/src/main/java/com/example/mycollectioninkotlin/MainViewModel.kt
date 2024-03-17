@@ -1,9 +1,9 @@
 package com.example.mycollectioninkotlin
 
 
-import android.app.Application
+
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mycollectioninkotlin.api.CovidApi
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-class MainViewModel(private val application: Application): AndroidViewModel(application) {
+class MainViewModel(): ViewModel() {
     // Create a Flow of List<Province>
     private val _dataFlow = MutableStateFlow<List<Province>>(emptyList())
     val dataFlow: StateFlow<List<Province>> = _dataFlow

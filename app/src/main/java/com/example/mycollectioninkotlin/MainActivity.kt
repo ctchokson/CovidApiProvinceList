@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mycollectioninkotlin.ui.theme.MyCollectionInKotlinTheme
@@ -42,14 +41,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyCollectionInKotlinTheme {
-                MyApp( modifier = Modifier.fillMaxSize(), viewModel)
+                DisplayInList( modifier = Modifier.fillMaxSize(), viewModel)
             }
         }
     }
 }
 
 @Composable
-fun MyApp(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
+fun DisplayInList(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
     val dataList  by viewModel.dataFlow.collectAsState(emptyList())
     val ctx = LocalContext.current
     LazyColumn(modifier = modifier
@@ -57,7 +56,7 @@ fun MyApp(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
         .padding(30.dp)
     ) {
         items(dataList) { item ->
-                ProductItem(province = item) {
+                RowItem(province = item) {
                     val intent = Intent(ctx,DetailActivity::class.java).apply {
                         putExtra("iso",item.iso)
                         putExtra("name",item.name)
@@ -75,7 +74,7 @@ fun MyApp(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
 
 
 @Composable
-fun ProductItem(province: Province, onItemClick: (Province) -> Unit) {
+fun RowItem(province: Province, onItemClick: (Province) -> Unit) {
     // Detect click and invoke the onItemClick lambda
     Box(
         modifier = Modifier
