@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-class MainViewModel(): ViewModel() {
+class MainViewModel: ViewModel() {
     // Create a Flow of List<Province>
     private val _dataFlow = MutableStateFlow<List<Province>>(emptyList())
     val dataFlow: StateFlow<List<Province>> = _dataFlow
@@ -42,7 +42,6 @@ class MainViewModel(): ViewModel() {
                     responseObject.body()?.let {
                         Log.d("Response Body", "Forming jsonObj")
                         val jsonObj = JSONObject(it.string())
-                        //Log.d("Response Body", jsonObj.toString())
                        val responseList = parseProvinceJsonResult(jsonObj)
                         _dataFlow.emit(responseList)
                         Log.d("After Parsing", responseList.toString())
@@ -72,6 +71,5 @@ class MainViewModel(): ViewModel() {
         }
 
         return provinceList
-
     }
 }

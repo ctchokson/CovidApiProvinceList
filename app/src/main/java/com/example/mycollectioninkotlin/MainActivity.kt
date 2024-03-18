@@ -1,5 +1,6 @@
 package com.example.mycollectioninkotlin
 
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -41,7 +42,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyCollectionInKotlinTheme {
-                DisplayInList( modifier = Modifier.fillMaxSize(), viewModel)
+                    CenterAlignedTopAppBar(getString(R.string.top_bar_text_main))
+                    DisplayInList(modifier = Modifier.fillMaxSize(), viewModel)
+
             }
         }
     }
@@ -53,7 +56,7 @@ fun DisplayInList(modifier: Modifier = Modifier, viewModel: MainViewModel ) {
     val ctx = LocalContext.current
     LazyColumn(modifier = modifier
         .fillMaxWidth()
-        .padding(30.dp)
+        .padding(top = 60.dp)
     ) {
         items(dataList) { item ->
                 RowItem(province = item) {
@@ -83,5 +86,13 @@ fun RowItem(province: Province, onItemClick: (Province) -> Unit) {
         contentAlignment = Alignment.Center
 
     ) {
-        Text(text = province.province, fontSize = 25.sp, color = Color.Gray, fontWeight = FontWeight.Bold)    }
+        Text(
+            text = province.province,
+            fontSize = 25.sp,
+            color = Color.Gray,
+            fontWeight = FontWeight.Bold
+        )
+    }
 }
+
+

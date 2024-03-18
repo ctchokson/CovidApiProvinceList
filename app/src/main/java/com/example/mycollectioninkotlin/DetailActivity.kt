@@ -37,7 +37,7 @@ class DetailActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CenterAlignedTopAppBar()
+                    CenterAlignedTopAppBar(getString(R.string.top_bar_text_detail))
                     DisplayDetails(extraDetail(intent))
                 }
             }
@@ -46,14 +46,13 @@ class DetailActivity : ComponentActivity() {
 }
 
 private fun extraDetail(intent: Intent): Province{
-    val iso = intent.getStringExtra("iso") ?: "iso"
-    val name = intent.getStringExtra("name") ?: "name"
+    val iso = intent.getStringExtra("iso") ?: ""
+    val name = intent.getStringExtra("name") ?: ""
     val province = intent.getStringExtra("province") ?: ""
     val lat = intent.getStringExtra("lat") ?: ""
     val long = intent.getStringExtra("long") ?: ""
 
     return Province(iso, name, province,lat, long)
-
 }
 
 @Composable
@@ -77,7 +76,7 @@ fun DisplayDetails(province: Province, modifier: Modifier = Modifier) {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CenterAlignedTopAppBar() {
+fun CenterAlignedTopAppBar(titleActivity: String) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
@@ -91,7 +90,7 @@ fun CenterAlignedTopAppBar() {
                 ),
                 title = {
                     Text(
-                        "Detail about province",
+                        titleActivity,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
